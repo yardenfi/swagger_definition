@@ -30,7 +30,7 @@ mod tests {
 
     #[test]
     fn create_swagger_definition() {
-        SwaggerDefinition {
+        let s = SwaggerDefinition {
             swagger: "2.0".to_owned(),
             info: InfoObject {
                 version: "0.0.0".to_string(),
@@ -40,5 +40,7 @@ mod tests {
             paths: HashMap::new(),
             ..Default::default()
         };
+
+        assert_eq!(s.swagger, "3.0");
     }
 }
