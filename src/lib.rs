@@ -1,10 +1,11 @@
-use crate::models::swagger_definition::swagger_info::SwaggerInfo;
 use std::collections::HashMap;
+#[macro_use]
+extern crate serde_derive;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct SwaggerDefinition {
     pub swagger: String,
-    pub info: SwaggerInfo,
+    pub info: swagger_info::SwaggerInfo,
     pub paths: Paths,
     pub host: Option<String>,
     pub schemas: Option<Vec<String>>,
@@ -104,5 +105,27 @@ pub enum ParameterPlace {
 impl Default for ParameterPlace {
     fn default() -> Self {
         return ParameterPlace::Query;
+    }
+}
+
+
+#[cfg(test)]
+mod tests {
+    use crate::SwaggerDefinition;
+    use crate::swagger_info::SwaggerInfo;
+    use std::collections::HashMap;
+
+    #[test]
+    fn create_swagger_definition() {
+        SwaggerDefinition {
+            swagger: "2.0".to_owned(),
+            info: SwaggerInfo {
+                version: "0.0.0".to_string(),
+                title: "Title".to_string(),
+                ..Default::default()
+            },
+            paths: HashMap::new(),
+            ..Default::default()
+        };
     }
 }
