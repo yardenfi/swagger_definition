@@ -40,7 +40,5 @@ mod tests {
             paths: HashMap::new(),
             ..Default::default()
         };
-
-        assert_eq!(s.swagger, "3.0");
     }
 }
