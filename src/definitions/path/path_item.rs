@@ -23,3 +23,25 @@ pub struct PathItem {
     #[serde(skip_serializing_if="Option::is_none")]
     pub trace: Option<OperationObject>
 }
+
+#[cfg(test)]
+mod tests {
+    use super::PathItem;
+    use serde_json;
+    use serde_json::Value;
+    use serde_json::value::Value::Null;
+
+    #[test]
+    fn test_operations_arent_serialized_unless_specified_explicitly() {
+        let path_item = PathItem {
+            ..Default::default()
+        };
+
+        let serialized_str = serde_json::to_string(&path_item).unwrap();
+        let deserialized: Value = serde_json::from_str(&serialized_str).unwrap();
+        for attribute in ["get", "post", "put", "delete", "options", "head", "trace"].iter() {
+            assert_eq!(Null, deserialized[attribute]);
+        }
+    }
+}
+
