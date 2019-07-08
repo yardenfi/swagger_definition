@@ -8,6 +8,9 @@
 
 #[macro_use]
 extern crate serde_derive;
+#[macro_use]
+extern crate serde_json;
+
 
 pub mod definitions;
 
@@ -29,6 +32,12 @@ pub use definitions::parameter::parameter_place::ParameterPlace;
 // definition
 pub use definitions::path::paths::Paths;
 pub use definitions::path::path_item::PathItem;
+
+// request
+pub use definitions::request::request_body_object;
+
+// media type
+pub use definitions::media_type::media_type_object;
 
 #[cfg(test)]
 mod tests {
