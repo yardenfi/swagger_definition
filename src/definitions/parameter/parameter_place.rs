@@ -7,7 +7,11 @@ pub enum ParameterPlace {
     #[serde(rename = "path")]
     Path,
     #[serde(rename = "cookie")]
-    Cookie
+    Cookie,
+    #[serde(rename = "body")]
+    Body,
+    #[serde(rename = "formData")]
+    FormData
 }
 
 impl Default for ParameterPlace {

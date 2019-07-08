@@ -10,7 +10,7 @@ pub struct OperationObject {
     // pub externalDocs:
     #[serde(rename = "operationId")]
     pub operation_id: Option<String>,
-    pub parameters: Option<ValueOrRef<Vec<ParameterObject>>>,
+    pub parameters: Option<Vec<ParameterObject>>,
     pub request_body: Option<RequestBodyObject>,
 //    pub responses:
 //    pub callbacks:
