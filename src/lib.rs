@@ -47,7 +47,7 @@ mod tests {
 
     #[test]
     fn create_swagger_definition() {
-        let s = SwaggerDefinition {
+        SwaggerDefinition {
             swagger: "2.0".to_owned(),
             info: InfoObject {
                 version: "0.0.0".to_string(),

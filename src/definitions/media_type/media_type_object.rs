@@ -32,6 +32,6 @@ mod tests {
         };
 
         let serialized = serde_json::to_string(&media_type).unwrap();
-        let deserialized: MediaTypeObject = serde_json::from_str(&serialized).unwrap();
+        let _: MediaTypeObject = serde_json::from_str(&serialized).unwrap();
     }
 }

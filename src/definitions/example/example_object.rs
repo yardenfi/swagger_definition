@@ -1,6 +1,6 @@
 use serde_json::Value;
 
-#[derive(Serialize, Deserialize, Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default, PartialEq)]
 pub struct ExampleObject {
     pub summary: Option<String>,
     pub description: Option<String>,
@@ -34,5 +34,25 @@ mod tests {
 
         let serialized_str = serde_json::to_string(&example_object).unwrap();
         let _: ExampleObject = serde_json::from_str(&serialized_str).unwrap();
+    }
+
+    #[test]
+    pub fn deserialize_yaml() {
+        let serialized = r#"
+summary: This is a summary
+description: This is the description
+value:
+    i: am alive
+        "#.to_owned();
+
+        let deserialized: ExampleObject = serde_yaml::from_str(&serialized).unwrap();
+        let expected = ExampleObject {
+            summary: Some("This is a summary".to_owned()),
+            description: Some("This is the description".to_owned()),
+            value: Some(json!({"i": "am alive"})),
+            external_value: None
+        };
+
+        assert_eq!(deserialized, expected);
     }
 }
