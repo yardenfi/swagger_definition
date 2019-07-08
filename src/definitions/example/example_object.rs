@@ -11,7 +11,7 @@ pub struct ExampleObject {
 }
 
 mod tests {
-    use super::ExampleObject;
+    use crate::ExampleObject;
 
     #[test]
     pub fn creating_example_object() {

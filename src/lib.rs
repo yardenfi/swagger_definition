@@ -13,6 +13,10 @@ extern crate serde_json;
 
 
 pub mod definitions;
+pub mod common;
+
+// value or ref
+pub use common::value_or_ref::ValueOrRef;
 
 // definition
 pub use definitions::swagger_definition::SwaggerDefinition;
@@ -34,10 +38,16 @@ pub use definitions::path::paths::Paths;
 pub use definitions::path::path_item::PathItem;
 
 // request
-pub use definitions::request::request_body_object;
+pub use definitions::request::request_body_object::RequestBodyObject;
 
 // media type
-pub use definitions::media_type::media_type_object;
+pub use definitions::media_type::media_type_object::MediaTypeObject;
+
+// example
+pub use definitions::example::example_object::ExampleObject;
+
+// ref
+pub use definitions::ref_::ref_::Ref;
 
 #[cfg(test)]
 mod tests {

@@ -1,4 +1,6 @@
 use crate::ParameterObject;
+use crate::RequestBodyObject;
+use crate::ValueOrRef;
 
 #[derive(Serialize, Deserialize, Debug, Default)]
 pub struct OperationObject {
@@ -8,8 +10,8 @@ pub struct OperationObject {
     // pub externalDocs:
     #[serde(rename = "operationId")]
     pub operation_id: Option<String>,
-    pub parameters: Option<Vec<ParameterObject>>,
-    //    pub requestBody:
+    pub parameters: Option<ValueOrRef<Vec<ParameterObject>>>,
+    pub request_body: Option<RequestBodyObject>,
 //    pub responses:
 //    pub callbacks:
     pub deprecated: Option<bool>
