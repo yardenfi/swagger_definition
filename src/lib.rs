@@ -12,60 +12,31 @@ extern crate serde_derive;
 extern crate serde_json;
 
 
-pub mod definitions;
-pub mod common;
-
 // value or ref
 pub use common::value_or_ref::ValueOrRef;
-
-// definition
-pub use definitions::swagger_definition::SwaggerDefinition;
-
+// example
+pub use definitions::example::example_object::ExampleObject;
+pub use definitions::info::contact_info::SwaggerContactInfo;
 // info
 pub use definitions::info::info_object::InfoObject;
 pub use definitions::info::licence_info::SwaggerLicenceInfo;
-pub use definitions::info::contact_info::SwaggerContactInfo;
-
+// media type
+pub use definitions::media_type::media_type_object::MediaTypeObject;
 // operation
 pub use definitions::operation::operation_object::OperationObject;
-
 // parameter
 pub use definitions::parameter::parameter_object::ParameterObject;
 pub use definitions::parameter::parameter_place::ParameterPlace;
-
+pub use definitions::path::path_item::PathItem;
 // definition
 pub use definitions::path::paths::Paths;
-pub use definitions::path::path_item::PathItem;
-
-// request
-pub use definitions::request::request_body_object::RequestBodyObject;
-
-// media type
-pub use definitions::media_type::media_type_object::MediaTypeObject;
-
-// example
-pub use definitions::example::example_object::ExampleObject;
-
 // ref
 pub use definitions::ref_::ref_::Ref;
+// request
+pub use definitions::request::request_body_object::RequestBodyObject;
+// definition
+pub use definitions::swagger_definition::SwaggerDefinition;
 
-#[cfg(test)]
-mod tests {
-    use crate::SwaggerDefinition;
-    use crate::InfoObject;
-    use std::collections::HashMap;
+pub mod definitions;
+pub mod common;
 
-    #[test]
-    fn create_swagger_definition() {
-        SwaggerDefinition {
-            swagger: "2.0".to_owned(),
-            info: InfoObject {
-                version: "0.0.0".to_string(),
-                title: "Title".to_string(),
-                ..Default::default()
-            },
-            paths: HashMap::new(),
-            ..Default::default()
-        };
-    }
-}
